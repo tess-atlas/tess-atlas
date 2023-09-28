@@ -15,6 +15,8 @@
 #   orphan: true
 # ---
 
+# <a href="https://colab.research.google.com/github/tess-atlas/toi_notebooks/blob/main/notebooks/toi_{{{TOINUMBER}}}.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/></a>
+
 # + tags=["exe", "hide-cell"]
 # ! pip install tess-atlas -q
 
