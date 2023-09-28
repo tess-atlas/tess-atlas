@@ -25,6 +25,7 @@ CLASSIFIERS = [
 ]
 INSTALL_REQUIRES = [
     "ploomber-engine>=0.0.30",
+    "interruptingcow",
     "ploomber-core==0.2.12",  # https://github.com/ploomber/core/issues/74
     "exoplanet>=0.5.1",
     "pymc3>=3.9",
