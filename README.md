@@ -1,4 +1,6 @@
 # TESS-Atlas
+<!-- Pytest Coverage Badge:Begin -->
+
 
 <p align="center">
   <img width = "450" src="https://raw.githubusercontent.com/tess-atlas/tess_atlas_webbuilder/main/source/_static/atlas_logo.png" />
