@@ -1,9 +1,9 @@
 # TESS-Atlas
-<!-- Pytest Coverage Badge:Begin -->
 
+[![Coverage Status](https://coveralls.io/repos/github/tess-atlas/tess-atlas/badge.svg?branch=main)](https://coveralls.io/github/tess-atlas/tess-atlas?branch=main)
 
 <p align="center">
-  <img width = "450" src="https://raw.githubusercontent.com/tess-atlas/tess_atlas_webbuilder/main/source/_static/atlas_logo.png" />
+  <img width = "100" src="https://raw.githubusercontent.com/tess-atlas/tess_atlas_webbuilder/main/source/_static/atlas_logo.png" />
   <br>
   <b>TESS Atlas</b>
 </p>
