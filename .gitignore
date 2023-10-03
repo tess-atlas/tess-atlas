@@ -1,14 +1,8 @@
-.pytest_cache
-tmp
-test_jobgen
-*.tar.gz
-.virtual_documents
 .DS_Store
 .ipynb_checkpoints
+cache
 *.log
-out_*/
 cached*
-!src/tess_atlas/data/exofop/cached_tic_database.csv
 build
 docs/notebooks/*/*.html
 __pycache__
@@ -23,6 +17,10 @@ notebooks/TEST
 *.egg-info
 src/tess_atlas/template.ipynb
 
+
+out_*/
+tmp/
+*.tar.gz
 test_minmax/
 tests/toi_*_files
 test_notebooks/
