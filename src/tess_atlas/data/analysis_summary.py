@@ -122,7 +122,6 @@ class AnalysisSummary:
         # make sure notebook dir does not have a file extension
         if not os.path.isdir(notebook_dir):
             raise ValueError(f"notebook_dir should be a dir: {notebook_dir}")
-            raise ValueError("notebook_dir should be a dir: {notebook_dir}")
         return os.path.join(notebook_dir, "analysis_summary.csv")
 
 

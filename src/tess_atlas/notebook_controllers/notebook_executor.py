@@ -4,7 +4,6 @@ import traceback
 
 import interruptingcow
 import nbformat
-from nbconvert import HTMLExporter
 from ploomber_engine import execute_notebook
 
 from ..logger import LOGGER_NAME
@@ -16,7 +15,6 @@ DAY_IN_SEC = 60 * 60 * 24
 
 def execute_ipynb(
     notebook_filename: str,
-    save_html=True,
     timeout=DAY_IN_SEC,
     save_profiling_data=True,
     **kwargs,
@@ -58,9 +56,6 @@ def execute_ipynb(
             f"Preprocessing {notebook_filename} failed:\n{err_str}"
         )
 
-    if save_html:
-        __notebook_to_html(notebook_filename)
-
     return success
 
 
@@ -69,12 +64,3 @@ def __read_ipynb_to_nbnode(
 ) -> nbformat.notebooknode.NotebookNode:
     with open(notebook_filename) as f:
         return nbformat.read(f, as_version=4)
-
-
-def __notebook_to_html(notebook_fname):
-    notebook = __read_ipynb_to_nbnode(notebook_fname)
-    html_exporter = HTMLExporter(template_name="pj")
-    (body, resources) = html_exporter.from_notebook_node(notebook)
-    html_fname = notebook_fname.replace(".ipynb", ".html")
-    with open(html_fname, "w") as f:
-        f.write(body)
