@@ -53,19 +53,11 @@ jobs:
           hide-comment: true
           pytest-coverage-path: ./pytest-coverage.txt
 
-      - name: Update README with Coverage Badge
+      - name: Upload Coverage to Coveralls
         if: ${{ github.ref == 'refs/heads/main' }}
         run: |
-          coverage_percent=$(awk -F" " '/^TOTAL.*[0-9]+%$/ {print $4}' ./pytest-coverage.txt)
-          coverage_badge="[![Coverage](https://img.shields.io/badge/Coverage-${coverage_percent}-brightgreen.svg)](coverage-report-link)"
-
-          sed -i -e "s|<!-- Pytest Coverage Badge:Begin -->|${coverage_badge}|g" ./README.md
-
-      - name: Commit & Push changes to README
-        if: ${{ github.ref == 'refs/heads/main' }}
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add README.md
-          git commit -m "Update coverage badge in README"
-          git push origin main
+          coverage xml
+          pip install coveralls
+          coveralls --merge=coverage.xml
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
