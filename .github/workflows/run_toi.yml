@@ -1,9 +1,14 @@
 name: run toi
 
 on:
+  workflow_dispatch: # Triggered manually
+  schedule:
+    - cron: "0 0 * * 0" # Scheduled to run every Sunday at midnight (0:00)
   push:
-    branches:
-      - main  # Change this to the branch you want to trigger the workflow on
+      branches:
+        - main
+      paths:
+        - 'src/**'
 
 jobs:
   build:
