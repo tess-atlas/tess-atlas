@@ -35,12 +35,9 @@ def download_toi(toi: int):
     urls = get_urls(toi)
     try:
         for url in urls:
-            subprocess.run(
-                COMMAND.format(url=url),
-                shell=True,
-                check=True,
-                capture_output=True,
-            )
+            cmd = COMMAND.format(url=url)
+            logger.debug(f"Running: {cmd}")
+            subprocess.run(cmd, shell=True, check=True, capture_output=True)
         logger.info(f"Notebook and data saved: {get_path(toi)}")
     except subprocess.CalledProcessError:
         logger.error(ERROR.format(toi=toi))
