@@ -134,10 +134,10 @@ class TOINotebookCore(NotebookController):
 def _quickrun_replacements(txt) -> str:
     """Hacks to make the notebook run faster for testing purposes."""
     txt = txt.replace("TESS Atlas fit", "TESS Atlas fit (quickrun)")
-    txt = re.sub(r"tune=[0-9]+", f"tune={5}", txt)
-    txt = re.sub(r"draws=[0-9]+", f"draws={10}", txt)
-    txt = re.sub(r"chains=[0-9]+", f"chains={1}", txt)
-    txt = re.sub(r"cores=[0-9]+", f"cores={1}", txt)
+    txt = re.sub(r"tune=[0-9]+", "tune=5", txt)
+    txt = re.sub(r"draws=[0-9]+", "draws=10", txt)
+    txt = re.sub(r"chains=[0-9]+", "chains=1", txt)
+    txt = re.sub(r"cores=[0-9]+", "cores=1", txt)
     txt = txt.replace(
         "init_params(planet_transit_model, **params)",
         "init_params(planet_transit_model, **params, quick=True)",
