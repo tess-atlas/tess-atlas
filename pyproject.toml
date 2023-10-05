@@ -24,10 +24,12 @@ profile = "black"
 line_length = 79
 
 
-[tool.coverage.paths]
-source = ["src/"]
+[tool.pytest.ini_options]
+addopts = "--cov=tess_atlas --cov-report term-missing"
+minversion = "6.0"
+testpaths = ["tests"]
 
-[tool.coverage.report]
+[tool.coverage.run]
 omit = [
     "src/tess_atlas/notebook_controllers/templates/*",
     "src/tess_atlas/analysis/transit_model.py"
