@@ -154,7 +154,7 @@ class TICEntry(DataObject):
                 optimized_params, self.outdir
             )
             self.optimized_params.save_data(self.outdir)
-        logger.info(f"Saved data in {self.outdir}")
+        logger.info(f"Saved data in {os.path.abspath(self.outdir)}")
 
     def __repr__(self):
         return f"<TICEntry[{self.toi_number}]>"
