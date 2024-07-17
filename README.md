@@ -1,6 +1,7 @@
 # TESS-Atlas
 
-[![Coverage Status](https://coveralls.io/repos/github/tess-atlas/tess-atlas/badge.svg?branch=main)](https://coveralls.io/github/tess-atlas/tess-atlas?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/tess-atlas/tess-atlas/badge.svg)](https://coveralls.io/github/tess-atlas/tess-atlas)
+[![run toi](https://github.com/tess-atlas/tess-atlas/actions/workflows/run_toi.yml/badge.svg)](https://github.com/tess-atlas/tess-atlas/actions/workflows/run_toi.yml)
 
 <p align="center">
   <img width = "100" src="https://raw.githubusercontent.com/tess-atlas/tess_atlas_webbuilder/main/source/_static/atlas_logo.png" />

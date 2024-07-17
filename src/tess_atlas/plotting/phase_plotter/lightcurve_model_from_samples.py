@@ -73,6 +73,9 @@ def generate_model_lightcurve(
         ]
     else:
         model_varnames = get_untransformed_varnames(planet_transit_model)
+        assert model_varnames == list(
+            sample.keys()
+        ), f"Expected {model_varnames}, got {list(sample.keys())}"
         samp = [sample[n] for n in model_varnames]
 
     lc = compute_variable(

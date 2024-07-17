@@ -1,5 +1,6 @@
 import logging
 import os
+from datetime import datetime
 from typing import List, NamedTuple, Optional, Union
 
 import pandas as pd
@@ -17,8 +18,7 @@ from tess_atlas.data.exofop.constants import (
 )
 
 from ...file_management import get_file_timestamp
-from ...logger import LOGGER_NAME, all_logging_disabled
-from ..lightcurve_data.lightcurve_search import LightcurveSearch
+from ...logger import LOGGER_NAME
 
 logger = logging.getLogger(LOGGER_NAME)
 
@@ -39,6 +39,10 @@ class ExofopDatabase:
         self.load(clean)
 
     def load(self, clean=False):
+        if self.cache_present and self.cache_is_old:
+            logger.debug("Cache is old, re-downloading")
+            clean = True
+
         if not self.cache_present or clean:
             self._clean_cache()
             self.__download()
@@ -50,7 +54,12 @@ class ExofopDatabase:
 
     @property
     def cache_timestamp(self):
-        return get_file_timestamp(self.cache_fname)
+        return get_file_timestamp(self.cache_fname, as_datetime=True)
+
+    @property
+    def cache_is_old(self):
+        """If cache is older than 1 day, return True"""
+        return (datetime.now() - self.cache_timestamp).days > 1
 
     @property
     def cache_present(self):
@@ -59,14 +68,6 @@ class ExofopDatabase:
     def _clean_cache(self):
         if self.cache_present:
             os.remove(self.cache_fname)
-
-    @property
-    def cached_tic_lk_dict(self):
-        if self.cache_present:
-            cached = pd.read_csv(self.cache_fname)
-            tics, lk_avail = cached[TIC_ID], cached[LK_AVAIL]
-            return dict(zip(tics, lk_avail))
-        return {}
 
     def __download(self):
         """Download the TIC cache.

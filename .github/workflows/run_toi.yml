@@ -1,0 +1,19 @@
+name: run toi
+
+on:
+  workflow_dispatch: # Triggered manually
+  schedule:
+    - cron: "0 0 * * 0" # Scheduled to run every Sunday at midnight (0:00)
+  push:
+      branches:
+        - main
+      paths:
+        - 'src/**'
+
+jobs:
+  build:
+    runs-on: nectar
+
+    steps:
+    - name: Run My Command
+      run: run_toi 103 --quickrun
